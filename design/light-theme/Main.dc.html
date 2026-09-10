@@ -31,15 +31,50 @@
     a:hover{color:var(--accent-2);}
     .container{max-width:1200px;margin:0 auto;padding:0 40px;}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);}
-    .eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
-    .btn{display:inline-flex;align-items:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;padding:14px 26px;border-radius:10px;cursor:pointer;white-space:nowrap;}
+    .eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);position:relative;}
+    .eyebrow-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:var(--accent);opacity:0.45;animation:pulseDot 2s ease-in-out infinite;}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;padding:14px 26px;border-radius:10px;cursor:pointer;white-space:nowrap;transition:transform .2s ease, box-shadow .2s ease;}
+    .btn:hover{transform:translateY(-2px);}
     .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent-2));color:var(--on-accent);border:1px solid transparent;}
+    .btn-primary:hover{box-shadow:0 14px 26px -10px oklch(0.55 0.135 190 / 0.45);}
     .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
-    .icon-box{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .card{background:var(--bg-1);border:1px solid var(--border-soft);border-radius:16px;box-shadow:0 1px 2px oklch(0.22 0.02 255 / 0.04);}
-    .pill{display:inline-flex;align-items:center;font-family:"Manrope",sans-serif;font-size:12px;font-weight:600;color:var(--text-muted);background:var(--bg-2);border:1px solid var(--border-soft);border-radius:999px;padding:6px 13px;}
-    .social-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-family:"Manrope",sans-serif;font-weight:700;font-size:13px;}
+    .icon-box{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .25s ease, color .25s ease, transform .25s ease;}
+    .card{background:var(--bg-1);border:1px solid var(--border-soft);border-radius:16px;box-shadow:0 1px 2px oklch(0.22 0.02 255 / 0.04);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+    .card.lift:hover{transform:translateY(-6px);box-shadow:0 22px 40px -16px oklch(0.22 0.02 255 / 0.18);border-color:var(--accent-soft);}
+    .card.lift:hover .icon-box{background:var(--accent);color:var(--on-accent);transform:scale(1.08) rotate(-4deg);}
+    .pill{display:inline-flex;align-items:center;font-family:"Manrope",sans-serif;font-size:12px;font-weight:600;color:var(--text-muted);background:var(--bg-2);border:1px solid var(--border-soft);border-radius:999px;padding:6px 13px;transition:border-color .2s ease, color .2s ease;}
+    .social-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-family:"Manrope",sans-serif;font-weight:700;font-size:13px;transition:transform .2s ease, background .2s ease, color .2s ease;}
+    .social-btn:hover{transform:translateY(-3px);background:var(--accent);color:var(--on-accent);border-color:transparent;}
     .section-head{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;margin:0 auto 56px auto;max-width:560px;}
+    .nav-link{position:relative;color:var(--text-muted);padding-bottom:4px;}
+    .nav-link::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:linear-gradient(90deg, var(--accent), var(--accent-2));transition:width .25s ease;}
+    .nav-link:hover::after{width:100%;}
+    .nav-link:hover{color:var(--text);}
+
+    @keyframes pulseDot{0%,100%{transform:scale(1);opacity:0.45;}50%{transform:scale(2.2);opacity:0;}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+    @keyframes blobMove{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(24px,-18px) scale(1.06);}}
+    @keyframes blobMove2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-20px,16px) scale(1.08);}}
+    @keyframes marqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    @keyframes marqueeScrollRev{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+    @keyframes shimmerBar{0%{transform:translateX(-100%);}100%{transform:translateX(220%);}}
+    @keyframes bounceArrow{0%,100%{transform:translateY(0);opacity:0.5;}50%{transform:translateY(8px);opacity:1;}}
+    @keyframes countPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+
+    .reveal{animation:fadeUp .8s cubic-bezier(.2,.7,.2,1) both;}
+    .float{animation:floatY 4.5s ease-in-out infinite;}
+    .blob{position:absolute;border-radius:50%;filter:blur(2px);animation:blobMove 9s ease-in-out infinite;}
+    .blob2{animation:blobMove2 11s ease-in-out infinite;}
+    .bar-track{position:relative;overflow:hidden;}
+    .bar-fill{position:relative;overflow:hidden;}
+    .bar-fill::after{content:"";position:absolute;top:0;left:0;width:40%;height:100%;background:linear-gradient(90deg, transparent, oklch(1 0 0 / 0.55), transparent);animation:shimmerBar 2.4s ease-in-out infinite;}
+    .marquee-mask{-webkit-mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);mask-image:linear-gradient(90deg, transparent, black 8%, black 92%, transparent);overflow:hidden;}
+    .marquee-track{display:flex;gap:14px;width:max-content;animation:marqueeScroll 30s linear infinite;}
+    .marquee-track-rev{animation:marqueeScrollRev 34s linear infinite;}
+    .scroll-cue{animation:bounceArrow 2s ease-in-out infinite;}
+    .stat-num{display:inline-block;animation:countPulse 3s ease-in-out infinite;}
+    .step-line{background:repeating-linear-gradient(90deg, var(--border) 0 8px, transparent 8px 14px);}
   </style>
 </helmet>
 
@@ -52,12 +87,13 @@
         <div style="width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg, var(--accent), var(--accent-2));display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:14px;color:var(--on-accent);">SS</div>
         <span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;">Shahin Shabab</span>
       </div>
-      <div style="display:flex;align-items:center;gap:36px;font-family:'Manrope',sans-serif;font-weight:600;font-size:14px;color:var(--text-muted);">
-        <a href="#about" style="color:var(--text-muted);">About</a>
-        <a href="#services" style="color:var(--text-muted);">Services</a>
-        <a href="#projects" style="color:var(--text-muted);">Projects</a>
-        <a href="#journey" style="color:var(--text-muted);">Journey</a>
-        <a href="#contact" style="color:var(--text-muted);">Contact</a>
+      <div style="display:flex;align-items:center;gap:36px;font-family:'Manrope',sans-serif;font-weight:600;font-size:14px;">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#tools" class="nav-link">Tools</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#journey" class="nav-link">Journey</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </div>
       <a href="#" class="btn btn-outline" style="padding:10px 20px;font-size:13px;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></svg>
@@ -68,20 +104,22 @@
 
   <!-- ===== HERO ===== -->
   <div id="home" style="position:relative;">
-    <div style="position:absolute;top:-180px;right:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, var(--accent-soft), transparent 70%);pointer-events:none;"></div>
-    <div class="container" style="position:relative;display:grid;grid-template-columns:1fr 0.9fr;gap:64px;align-items:center;padding-top:88px;padding-bottom:110px;">
+    <div class="blob" style="top:-200px;right:-140px;width:560px;height:560px;background:radial-gradient(circle, var(--accent-soft), transparent 70%);pointer-events:none;"></div>
+    <div class="blob blob2" style="top:120px;left:-160px;width:360px;height:360px;background:radial-gradient(circle, oklch(0.50 0.135 255 / 0.08), transparent 70%);pointer-events:none;"></div>
+
+    <div class="container" style="position:relative;display:grid;grid-template-columns:1fr 0.9fr;gap:64px;align-items:center;padding-top:88px;padding-bottom:70px;">
       <div>
-        <div class="eyebrow"><span class="eyebrow-dot"></span>DATA ANALYST &middot; DUBAI, UAE</div>
-        <h1 style="font-size:60px;font-weight:800;line-height:1.05;margin-top:20px;">Shahin Shabab</h1>
-        <p style="margin-top:22px;font-size:17px;line-height:1.7;color:var(--text-muted);max-width:480px;">Analytical and results-driven Data Analyst skilled in SQL, Python, Power BI, Tableau, and Excel. I help businesses turn complex data into clear, actionable insights to improve decision-making and performance.</p>
-        <div style="display:flex;gap:14px;margin-top:34px;">
+        <div class="eyebrow reveal"><span class="eyebrow-dot"></span>DATA ANALYST &middot; DUBAI, UAE</div>
+        <h1 style="font-size:60px;font-weight:800;line-height:1.05;margin-top:20px;" class="reveal" style="animation-delay:.05s;">Shahin Shabab</h1>
+        <p style="margin-top:22px;font-size:17px;line-height:1.7;color:var(--text-muted);max-width:480px;" class="reveal" style="animation-delay:.1s;">Analytical and results-driven Data Analyst skilled in SQL, Python, Power BI, Tableau, and Excel. I help businesses turn complex data into clear, actionable insights to improve decision-making and performance.</p>
+        <div style="display:flex;gap:14px;margin-top:34px;" class="reveal" style="animation-delay:.15s;">
           <a href="#contact" class="btn btn-primary">Contact Me</a>
           <a href="#" class="btn btn-outline">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></svg>
             Download CV
           </a>
         </div>
-        <div style="display:flex;gap:12px;margin-top:36px;">
+        <div style="display:flex;gap:12px;margin-top:36px;" class="reveal" style="animation-delay:.2s;">
           <a href="https://linkedin.com/in/shahinshababp" class="social-btn">in</a>
           <a href="https://github.com/shahinshabab" class="social-btn">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 3 12l5 6"/><path d="M16 6l5 6-5 6"/></svg>
@@ -90,7 +128,7 @@
       </div>
 
       <!-- portrait photo -->
-      <div style="position:relative;padding:0 10px 40px 0;">
+      <div style="position:relative;padding:0 10px 40px 0;" class="reveal" style="animation-delay:.15s;">
         <div style="position:absolute;top:-24px;left:-24px;width:100%;height:100%;background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:20px 20px;opacity:0.6;border-radius:24px;"></div>
         <div class="card" style="position:relative;padding:14px;overflow:visible;">
           <div style="position:relative;border-radius:14px;overflow:hidden;aspect-ratio:3/3.5;">
@@ -102,7 +140,7 @@
           </div>
 
           <!-- floating stat card -->
-          <div class="card" style="position:absolute;left:-30px;bottom:-30px;padding:16px 20px;display:flex;gap:18px;box-shadow:0 22px 40px -12px oklch(0.22 0.02 255 / 0.22);">
+          <div class="card float" style="position:absolute;left:-30px;bottom:-30px;padding:16px 20px;display:flex;gap:18px;box-shadow:0 22px 40px -12px oklch(0.22 0.02 255 / 0.22);">
             <div>
               <div style="font-size:10.5px;color:var(--text-dim);">Accuracy</div>
               <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:19px;margin-top:2px;">98.2%</div>
@@ -121,18 +159,45 @@
         </div>
       </div>
     </div>
+
+    <div class="container" style="position:relative;display:flex;justify-content:center;padding-bottom:26px;">
+      <svg class="scroll-cue" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15m0 0-6-6m6 6 6-6"/></svg>
+    </div>
+  </div>
+
+  <!-- ===== STATS BAND ===== -->
+  <div style="border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);background:var(--bg-1);">
+    <div class="container" style="display:grid;grid-template-columns:repeat(4, 1fr);padding:40px 0;">
+      <div style="text-align:center;border-right:1px solid var(--border-soft);" class="reveal">
+        <div class="stat-num" style="font-family:'Manrope',sans-serif;font-weight:800;font-size:30px;background:linear-gradient(135deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">3+</div>
+        <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px;">Data Projects Delivered</div>
+      </div>
+      <div style="text-align:center;border-right:1px solid var(--border-soft);" class="reveal" style="animation-delay:.05s;">
+        <div class="stat-num" style="font-family:'Manrope',sans-serif;font-weight:800;font-size:30px;background:linear-gradient(135deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">98.2%</div>
+        <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px;">Average Data Accuracy</div>
+      </div>
+      <div style="text-align:center;border-right:1px solid var(--border-soft);" class="reveal" style="animation-delay:.1s;">
+        <div class="stat-num" style="font-family:'Manrope',sans-serif;font-weight:800;font-size:30px;background:linear-gradient(135deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">2</div>
+        <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px;">Professional Certifications</div>
+      </div>
+      <div style="text-align:center;" class="reveal" style="animation-delay:.15s;">
+        <div class="stat-num" style="font-family:'Manrope',sans-serif;font-weight:800;font-size:30px;background:linear-gradient(135deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">7.01</div>
+        <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px;">CGPA &middot; B.Tech Data Science</div>
+      </div>
+    </div>
   </div>
 
   <!-- ===== ABOUT + SKILLS ===== -->
-  <div id="about" class="container" style="padding-top:70px;padding-bottom:110px;">
+  <div id="about" class="container" style="padding-top:110px;padding-bottom:110px;">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
       <div>
         <div class="eyebrow"><span class="eyebrow-dot"></span>About</div>
         <h2 style="font-size:34px;font-weight:800;margin-top:16px;line-height:1.2;">Turning raw data into decisions that matter</h2>
         <p style="margin-top:20px;font-size:16px;line-height:1.75;color:var(--text-muted);">I specialise in collecting, cleaning, and analysing data to uncover patterns and support smart business decisions. With hands-on experience in dashboards, automation, and performance monitoring, I focus on building practical solutions that improve efficiency and visibility for teams and stakeholders.</p>
-        <div style="display:flex;gap:12px;margin-top:26px;">
+        <div style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;">
           <span class="pill">B.Tech Data Science &amp; Engineering</span>
           <span class="pill">Based in Dubai, UAE</span>
+          <span class="pill">Open to freelance &amp; full-time roles</span>
         </div>
       </div>
 
@@ -144,8 +209,8 @@
               <span>Data Visualization <span style="color:var(--text-dim);font-weight:500;">(Power BI / Tableau / Grafana)</span></span>
               <span style="color:var(--accent);">90%</span>
             </div>
-            <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:10px;">
-              <div style="height:100%;width:90%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+            <div class="bar-track" style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:10px;">
+              <div class="bar-fill" style="height:100%;width:90%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
             </div>
           </div>
 
@@ -154,8 +219,8 @@
               <span>SQL &amp; Database Management</span>
               <span style="color:var(--accent);">85%</span>
             </div>
-            <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:10px;">
-              <div style="height:100%;width:85%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+            <div class="bar-track" style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:10px;">
+              <div class="bar-fill" style="height:100%;width:85%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
             </div>
           </div>
 
@@ -164,8 +229,8 @@
               <span>Python <span style="color:var(--text-dim);font-weight:500;">(Pandas, NumPy) &amp; Automation</span></span>
               <span style="color:var(--accent);">80%</span>
             </div>
-            <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:10px;">
-              <div style="height:100%;width:80%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+            <div class="bar-track" style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:10px;">
+              <div class="bar-fill" style="height:100%;width:80%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
             </div>
           </div>
 
@@ -174,12 +239,113 @@
               <span>Excel &amp; Reporting</span>
               <span style="color:var(--accent);">88%</span>
             </div>
-            <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:10px;">
-              <div style="height:100%;width:88%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+            <div class="bar-track" style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:10px;">
+              <div class="bar-fill" style="height:100%;width:88%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
             </div>
           </div>
 
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOOLS & TECHNOLOGIES (marquee) ===== -->
+  <div id="tools" style="background:var(--bg-1);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);padding:64px 0;">
+    <div class="section-head" style="margin-bottom:36px;">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Tools &amp; Technologies</div>
+      <h2 style="font-size:30px;font-weight:800;">What I build with, day to day</h2>
+    </div>
+
+    <div class="marquee-mask">
+      <div class="marquee-track">
+        <span class="pill" style="padding:10px 18px;font-size:13px;">SQL</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Python</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Pandas</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">NumPy</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Power BI</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Tableau</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Excel</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Grafana</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Google Data Studio</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">AWS</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Git</span>
+        <!-- duplicate for seamless loop -->
+        <span class="pill" style="padding:10px 18px;font-size:13px;">SQL</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Python</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Pandas</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">NumPy</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Power BI</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Tableau</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Excel</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Grafana</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Google Data Studio</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">AWS</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Git</span>
+      </div>
+    </div>
+    <div class="marquee-mask" style="margin-top:14px;">
+      <div class="marquee-track marquee-track-rev">
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Data Cleaning</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">ETL</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Dashboarding</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">KPI Reporting</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Statistical Analysis</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Process Automation</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Jupyter</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Social Network Analysis</span>
+        <!-- duplicate -->
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Data Cleaning</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">ETL</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Dashboarding</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">KPI Reporting</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Statistical Analysis</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Process Automation</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Jupyter</span>
+        <span class="pill" style="padding:10px 18px;font-size:13px;">Social Network Analysis</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HOW I WORK ===== -->
+  <div class="container" style="padding-top:110px;padding-bottom:110px;">
+    <div class="section-head">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Process</div>
+      <h2 style="font-size:34px;font-weight:800;">How I work</h2>
+    </div>
+
+    <div style="position:relative;display:grid;grid-template-columns:repeat(4, 1fr);gap:24px;">
+      <div class="step-line" style="position:absolute;top:22px;left:60px;right:60px;height:1px;"></div>
+
+      <div style="text-align:center;position:relative;" class="reveal">
+        <div class="icon-box" style="margin:0 auto;background:var(--accent);color:var(--on-accent);position:relative;z-index:1;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <h4 style="font-size:15.5px;font-weight:700;margin-top:16px;">01 &middot; Understand</h4>
+        <p style="margin-top:8px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Clarify the business question and the decisions the data needs to support.</p>
+      </div>
+
+      <div style="text-align:center;position:relative;" class="reveal" style="animation-delay:.08s;">
+        <div class="icon-box" style="margin:0 auto;background:var(--accent);color:var(--on-accent);position:relative;z-index:1;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2Z"/><path d="M4 6v6c0 1.1 3.6 2 8 2s8-.9 8-2V6"/><path d="M4 12v6c0 1.1 3.6 2 8 2s8-.9 8-2v-6"/></svg>
+        </div>
+        <h4 style="font-size:15.5px;font-weight:700;margin-top:16px;">02 &middot; Clean &amp; Prepare</h4>
+        <p style="margin-top:8px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Validate, structure and transform raw data with SQL, Python and Excel.</p>
+      </div>
+
+      <div style="text-align:center;position:relative;" class="reveal" style="animation-delay:.16s;">
+        <div class="icon-box" style="margin:0 auto;background:var(--accent);color:var(--on-accent);position:relative;z-index:1;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+        </div>
+        <h4 style="font-size:15.5px;font-weight:700;margin-top:16px;">03 &middot; Analyse &amp; Visualise</h4>
+        <p style="margin-top:8px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Build dashboards and models that surface patterns and trends clearly.</p>
+      </div>
+
+      <div style="text-align:center;position:relative;" class="reveal" style="animation-delay:.24s;">
+        <div class="icon-box" style="margin:0 auto;background:var(--accent);color:var(--on-accent);position:relative;z-index:1;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+        </div>
+        <h4 style="font-size:15.5px;font-weight:700;margin-top:16px;">04 &middot; Deliver &amp; Iterate</h4>
+        <p style="margin-top:8px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Share insights with stakeholders and refine reporting as needs evolve.</p>
       </div>
     </div>
   </div>
@@ -194,37 +360,37 @@
 
       <div style="display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:24px;">
 
-        <div class="card" style="padding:28px;">
+        <div class="card lift" style="padding:28px;">
           <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div>
           <h4 style="font-size:17px;font-weight:700;margin-top:18px;">Dashboards &amp; Reporting</h4>
           <p style="margin-top:10px;font-size:14px;line-height:1.65;color:var(--text-muted);">Designing interactive dashboards in Power BI, Tableau, Grafana and Google Data Studio to track KPIs and business performance in real time.</p>
         </div>
 
-        <div class="card" style="padding:28px;">
+        <div class="card lift" style="padding:28px;">
           <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2Z"/><path d="M4 6v6c0 1.1 3.6 2 8 2s8-.9 8-2V6"/><path d="M4 12v6c0 1.1 3.6 2 8 2s8-.9 8-2v-6"/></svg></div>
           <h4 style="font-size:17px;font-weight:700;margin-top:18px;">Data Cleaning &amp; Preparation</h4>
           <p style="margin-top:10px;font-size:14px;line-height:1.65;color:var(--text-muted);">Cleaning, validating and transforming raw data using SQL, Python and Excel for clear, reliable analysis.</p>
         </div>
 
-        <div class="card" style="padding:28px;">
+        <div class="card lift" style="padding:28px;">
           <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
           <h4 style="font-size:17px;font-weight:700;margin-top:18px;">Business Insights &amp; KPIs</h4>
           <p style="margin-top:10px;font-size:14px;line-height:1.65;color:var(--text-muted);">Monitoring KPIs, identifying trends and providing clear insights that support decision making and process optimisation.</p>
         </div>
 
-        <div class="card" style="padding:28px;">
+        <div class="card lift" style="padding:28px;">
           <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
           <h4 style="font-size:17px;font-weight:700;margin-top:18px;">Analytics Automation</h4>
           <p style="margin-top:10px;font-size:14px;line-height:1.65;color:var(--text-muted);">Automating recurring reports and data flows using Python, saving time and reducing manual work for teams and stakeholders.</p>
         </div>
 
-        <div class="card" style="padding:28px;">
+        <div class="card lift" style="padding:28px;">
           <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 7 4-14 2 7h6"/></svg></div>
           <h4 style="font-size:17px;font-weight:700;margin-top:18px;">Performance Tracking</h4>
           <p style="margin-top:10px;font-size:14px;line-height:1.65;color:var(--text-muted);">Automated weekly and monthly task analytics reports, integrating data pipelines to share insights with managers and stakeholders efficiently.</p>
         </div>
 
-        <div class="card" style="padding:28px;">
+        <div class="card lift" style="padding:28px;">
           <div class="icon-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/><path d="M8 9h8M8 13h5"/></svg></div>
           <h4 style="font-size:17px;font-weight:700;margin-top:18px;">Data Storytelling</h4>
           <p style="margin-top:10px;font-size:14px;line-height:1.65;color:var(--text-muted);">Translating complex datasets into simple visual stories so that non-technical stakeholders can understand and act on insights.</p>
@@ -243,7 +409,7 @@
 
     <div style="display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:24px;">
 
-      <div class="card" style="overflow:hidden;">
+      <div class="card lift" style="overflow:hidden;">
         <div style="height:110px;background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:16px 16px;background-color:var(--bg-2);padding:16px;">
           <svg width="100%" height="100%" viewBox="0 0 220 80" fill="none">
             <polyline points="0,60 30,45 60,55 90,25 120,38 150,15 180,28 220,10" fill="none" stroke="oklch(0.55 0.135 190)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -258,7 +424,7 @@
         </div>
       </div>
 
-      <div class="card" style="overflow:hidden;">
+      <div class="card lift" style="overflow:hidden;">
         <div style="height:110px;background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:16px 16px;background-color:var(--bg-2);padding:16px;display:flex;align-items:flex-end;">
           <svg width="100%" height="70" viewBox="0 0 220 70" fill="none">
             <rect x="6" y="30" width="18" height="40" rx="2" fill="oklch(0.55 0.135 190)"/>
@@ -278,7 +444,7 @@
         </div>
       </div>
 
-      <div class="card" style="overflow:hidden;">
+      <div class="card lift" style="overflow:hidden;">
         <div style="height:110px;background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:16px 16px;background-color:var(--bg-2);padding:16px;display:flex;align-items:center;justify-content:center;">
           <svg width="70" height="70" viewBox="0 0 36 36">
             <circle cx="18" cy="18" r="15.5" fill="none" stroke="var(--bg)" stroke-width="5"/>
@@ -295,10 +461,20 @@
         </div>
       </div>
 
+      <div class="card lift" style="overflow:hidden;display:flex;align-items:center;justify-content:center;padding:36px 24px;border-style:dashed;">
+        <a href="https://github.com/shahinshabab" style="text-align:center;color:var(--text);">
+          <div class="icon-box" style="margin:0 auto;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 3 12l5 6"/><path d="M16 6l5 6-5 6"/></svg>
+          </div>
+          <h4 style="font-size:15.5px;font-weight:700;margin-top:16px;">More projects on GitHub</h4>
+          <p style="margin-top:8px;font-size:13px;color:var(--text-muted);">github.com/shahinshabab</p>
+        </a>
+      </div>
+
     </div>
   </div>
 
-  <!-- ===== JOURNEY (Education / Experience / Certificate) ===== -->
+  <!-- ===== JOURNEY (Education / Experience / Certificates) ===== -->
   <div id="journey" style="background:var(--bg-1);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);">
     <div class="container" style="padding-top:110px;padding-bottom:110px;">
       <div class="section-head">
@@ -331,11 +507,21 @@
 
         <div style="display:flex;gap:24px;position:relative;">
           <div class="icon-box" style="position:relative;z-index:1;background:var(--bg);border:1px solid var(--border);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
-          <div class="card" style="flex:1;padding:24px;">
+          <div class="card" style="flex:1;padding:24px;margin-bottom:24px;">
             <span class="pill" style="color:var(--accent);border-color:var(--accent-soft);">Certification</span>
             <h4 style="font-size:17px;font-weight:700;margin-top:12px;">Data Science &amp; Analytics Certificate</h4>
             <p style="margin-top:6px;font-size:13.5px;color:var(--text-muted);"><strong style="color:var(--text);">GeeksforGeeks</strong> &middot; Completed 2024</p>
             <p style="margin-top:12px;font-size:14px;line-height:1.65;color:var(--text-muted);">Comprehensive program covering Python, Pandas &amp; NumPy, SQL, data visualization, and machine learning fundamentals through real-world projects and coding assessments.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px;position:relative;">
+          <div class="icon-box" style="position:relative;z-index:1;background:var(--bg);border:1px solid var(--border);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
+          <div class="card" style="flex:1;padding:24px;">
+            <span class="pill" style="color:var(--accent);border-color:var(--accent-soft);">Certification &middot; Elite</span>
+            <h4 style="font-size:17px;font-weight:700;margin-top:12px;">Social Network Analysis</h4>
+            <p style="margin-top:6px;font-size:13.5px;color:var(--text-muted);"><strong style="color:var(--text);">NPTEL &middot; IIT Madras</strong> &middot; Jul &ndash; Oct 2024 &middot; Score 70%</p>
+            <p style="margin-top:12px;font-size:14px;line-height:1.65;color:var(--text-muted);">12-week certification (funded by the Ministry of Education, Govt. of India) covering graph theory and network analysis techniques, completed with a proctored exam.</p>
           </div>
         </div>
 

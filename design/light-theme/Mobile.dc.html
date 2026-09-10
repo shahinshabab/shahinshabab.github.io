@@ -31,8 +31,9 @@
     a:hover{color:var(--accent-2);}
     .container{padding:0 20px;}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);}
-    .eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;padding:14px 22px;border-radius:10px;cursor:pointer;width:100%;}
+    .eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;position:relative;}
+    .eyebrow-dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:var(--accent);opacity:0.45;animation:pulseDot 2s ease-in-out infinite;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;padding:14px 22px;border-radius:10px;cursor:pointer;width:100%;transition:transform .2s ease;}
     .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent-2));color:var(--on-accent);border:1px solid transparent;}
     .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
     .icon-box{width:40px;height:40px;border-radius:11px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -40,6 +41,25 @@
     .pill{display:inline-flex;align-items:center;font-family:"Manrope",sans-serif;font-size:11.5px;font-weight:600;color:var(--text-muted);background:var(--bg-2);border:1px solid var(--border-soft);border-radius:999px;padding:6px 12px;}
     .social-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-family:"Manrope",sans-serif;font-weight:700;font-size:13px;flex-shrink:0;}
     .section-head{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;margin:0 auto 32px auto;}
+
+    @keyframes pulseDot{0%,100%{transform:scale(1);opacity:0.45;}50%{transform:scale(2.2);opacity:0;}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+    @keyframes marqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    @keyframes marqueeScrollRev{from{transform:translateX(-50%);}to{transform:translateX(0);}}
+    @keyframes shimmerBar{0%{transform:translateX(-100%);}100%{transform:translateX(220%);}}
+    @keyframes countPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+
+    .reveal{animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) both;}
+    .float{animation:floatY 4.5s ease-in-out infinite;}
+    .bar-track{position:relative;overflow:hidden;}
+    .bar-fill{position:relative;overflow:hidden;}
+    .bar-fill::after{content:"";position:absolute;top:0;left:0;width:40%;height:100%;background:linear-gradient(90deg, transparent, oklch(1 0 0 / 0.55), transparent);animation:shimmerBar 2.4s ease-in-out infinite;}
+    .marquee-mask{-webkit-mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);overflow:hidden;}
+    .marquee-track{display:flex;gap:10px;width:max-content;animation:marqueeScroll 24s linear infinite;}
+    .marquee-track-rev{animation:marqueeScrollRev 27s linear infinite;}
+    .stat-num{display:inline-block;animation:countPulse 3s ease-in-out infinite;}
+    .step-line{background:repeating-linear-gradient(180deg, var(--border) 0 8px, transparent 8px 14px);}
   </style>
 </helmet>
 
@@ -62,12 +82,12 @@
   <div id="home" style="position:relative;">
     <div style="position:absolute;top:-100px;right:-140px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle, var(--accent-soft), transparent 70%);pointer-events:none;"></div>
     <div class="container" style="position:relative;padding-top:44px;padding-bottom:56px;">
-      <div class="eyebrow"><span class="eyebrow-dot"></span>DATA ANALYST &middot; DUBAI, UAE</div>
-      <h1 style="font-size:36px;font-weight:800;line-height:1.1;margin-top:16px;">Shahin Shabab</h1>
-      <p style="margin-top:16px;font-size:15px;line-height:1.7;color:var(--text-muted);">Analytical and results-driven Data Analyst skilled in SQL, Python, Power BI, Tableau, and Excel. I help businesses turn complex data into clear, actionable insights.</p>
+      <div class="eyebrow reveal"><span class="eyebrow-dot"></span>DATA ANALYST &middot; DUBAI, UAE</div>
+      <h1 style="font-size:36px;font-weight:800;line-height:1.1;margin-top:16px;" class="reveal">Shahin Shabab</h1>
+      <p style="margin-top:16px;font-size:15px;line-height:1.7;color:var(--text-muted);" class="reveal">Analytical and results-driven Data Analyst skilled in SQL, Python, Power BI, Tableau, and Excel. I help businesses turn complex data into clear, actionable insights.</p>
 
       <!-- portrait photo -->
-      <div style="position:relative;margin-top:28px;padding-bottom:34px;">
+      <div style="position:relative;margin-top:28px;padding-bottom:34px;" class="reveal">
         <div style="position:absolute;top:-14px;left:-14px;width:100%;height:100%;background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:18px 18px;opacity:0.6;border-radius:20px;"></div>
         <div class="card" style="position:relative;padding:10px;">
           <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/11;">
@@ -77,7 +97,7 @@
               <span class="eyebrow-dot" style="margin-right:6px;"></span>Open to work
             </div>
           </div>
-          <div class="card" style="position:absolute;left:14px;right:14px;bottom:-26px;padding:13px 16px;display:flex;justify-content:space-between;box-shadow:0 16px 30px -10px oklch(0.22 0.02 255 / 0.2);">
+          <div class="card float" style="position:absolute;left:14px;right:14px;bottom:-26px;padding:13px 16px;display:flex;justify-content:space-between;box-shadow:0 16px 30px -10px oklch(0.22 0.02 255 / 0.2);">
             <div>
               <div style="font-size:10px;color:var(--text-dim);">Accuracy</div>
               <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;margin-top:2px;">98.2%</div>
@@ -110,6 +130,28 @@
     </div>
   </div>
 
+  <!-- ===== STATS BAND ===== -->
+  <div style="border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);background:var(--bg-1);">
+    <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:28px 20px;">
+      <div style="text-align:center;">
+        <div class="stat-num" style="font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;background:linear-gradient(135deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">3+</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Data Projects Delivered</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="stat-num" style="font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;background:linear-gradient(135deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">98.2%</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Average Data Accuracy</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="stat-num" style="font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;background:linear-gradient(135deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">2</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Professional Certifications</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="stat-num" style="font-family:'Manrope',sans-serif;font-weight:800;font-size:24px;background:linear-gradient(135deg, var(--accent), var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;">7.01</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">CGPA &middot; B.Tech Data Science</div>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== ABOUT + SKILLS ===== -->
   <div id="about" class="container" style="padding-top:52px;padding-bottom:56px;">
     <div class="eyebrow"><span class="eyebrow-dot"></span>About</div>
@@ -129,8 +171,8 @@
             <span style="color:var(--accent);">90%</span>
           </div>
           <div style="font-size:11.5px;color:var(--text-dim);margin-top:2px;">Power BI / Tableau / Grafana</div>
-          <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
-            <div style="height:100%;width:90%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+          <div class="bar-track" style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
+            <div class="bar-fill" style="height:100%;width:90%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
           </div>
         </div>
 
@@ -139,8 +181,8 @@
             <span>SQL &amp; Database Management</span>
             <span style="color:var(--accent);">85%</span>
           </div>
-          <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
-            <div style="height:100%;width:85%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+          <div class="bar-track" style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
+            <div class="bar-fill" style="height:100%;width:85%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
           </div>
         </div>
 
@@ -150,8 +192,8 @@
             <span style="color:var(--accent);">80%</span>
           </div>
           <div style="font-size:11.5px;color:var(--text-dim);margin-top:2px;">Pandas, NumPy</div>
-          <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
-            <div style="height:100%;width:80%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+          <div class="bar-track" style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
+            <div class="bar-fill" style="height:100%;width:80%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
           </div>
         </div>
 
@@ -160,11 +202,84 @@
             <span>Excel &amp; Reporting</span>
             <span style="color:var(--accent);">88%</span>
           </div>
-          <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
-            <div style="height:100%;width:88%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+          <div class="bar-track" style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
+            <div class="bar-fill" style="height:100%;width:88%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOOLS & TECHNOLOGIES (marquee) ===== -->
+  <div id="tools" style="background:var(--bg-1);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);padding:48px 0;">
+    <div class="section-head" style="margin-bottom:24px;padding:0 20px;">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Tools &amp; Technologies</div>
+      <h2 style="font-size:22px;font-weight:800;">What I build with</h2>
+    </div>
+
+    <div class="marquee-mask">
+      <div class="marquee-track">
+        <span class="pill">SQL</span><span class="pill">Python</span><span class="pill">Pandas</span>
+        <span class="pill">NumPy</span><span class="pill">Power BI</span><span class="pill">Tableau</span>
+        <span class="pill">Excel</span><span class="pill">Grafana</span><span class="pill">AWS</span><span class="pill">Git</span>
+        <span class="pill">SQL</span><span class="pill">Python</span><span class="pill">Pandas</span>
+        <span class="pill">NumPy</span><span class="pill">Power BI</span><span class="pill">Tableau</span>
+        <span class="pill">Excel</span><span class="pill">Grafana</span><span class="pill">AWS</span><span class="pill">Git</span>
+      </div>
+    </div>
+    <div class="marquee-mask" style="margin-top:10px;">
+      <div class="marquee-track marquee-track-rev">
+        <span class="pill">Data Cleaning</span><span class="pill">ETL</span><span class="pill">Dashboarding</span>
+        <span class="pill">KPI Reporting</span><span class="pill">Statistical Analysis</span><span class="pill">Automation</span>
+        <span class="pill">Social Network Analysis</span>
+        <span class="pill">Data Cleaning</span><span class="pill">ETL</span><span class="pill">Dashboarding</span>
+        <span class="pill">KPI Reporting</span><span class="pill">Statistical Analysis</span><span class="pill">Automation</span>
+        <span class="pill">Social Network Analysis</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HOW I WORK ===== -->
+  <div class="container" style="padding-top:52px;padding-bottom:56px;">
+    <div class="section-head">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Process</div>
+      <h2 style="font-size:24px;font-weight:800;">How I work</h2>
+    </div>
+
+    <div style="position:relative;">
+      <div class="step-line" style="position:absolute;left:19px;top:6px;bottom:6px;width:1px;"></div>
+
+      <div style="display:flex;gap:16px;position:relative;margin-bottom:22px;">
+        <div class="icon-box" style="position:relative;z-index:1;background:var(--accent);color:var(--on-accent);width:40px;height:40px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <div>
+          <h4 style="font-size:14.5px;font-weight:700;">01 &middot; Understand</h4>
+          <p style="margin-top:6px;font-size:13px;line-height:1.6;color:var(--text-muted);">Clarify the business question and the decisions the data needs to support.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:16px;position:relative;margin-bottom:22px;">
+        <div class="icon-box" style="position:relative;z-index:1;background:var(--accent);color:var(--on-accent);width:40px;height:40px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2Z"/><path d="M4 6v6c0 1.1 3.6 2 8 2s8-.9 8-2V6"/><path d="M4 12v6c0 1.1 3.6 2 8 2s8-.9 8-2v-6"/></svg></div>
+        <div>
+          <h4 style="font-size:14.5px;font-weight:700;">02 &middot; Clean &amp; Prepare</h4>
+          <p style="margin-top:6px;font-size:13px;line-height:1.6;color:var(--text-muted);">Validate, structure and transform raw data with SQL, Python and Excel.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:16px;position:relative;margin-bottom:22px;">
+        <div class="icon-box" style="position:relative;z-index:1;background:var(--accent);color:var(--on-accent);width:40px;height:40px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div>
+        <div>
+          <h4 style="font-size:14.5px;font-weight:700;">03 &middot; Analyse &amp; Visualise</h4>
+          <p style="margin-top:6px;font-size:13px;line-height:1.6;color:var(--text-muted);">Build dashboards and models that surface patterns and trends clearly.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:16px;position:relative;">
+        <div class="icon-box" style="position:relative;z-index:1;background:var(--accent);color:var(--on-accent);width:40px;height:40px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+        <div>
+          <h4 style="font-size:14.5px;font-weight:700;">04 &middot; Deliver &amp; Iterate</h4>
+          <p style="margin-top:6px;font-size:13px;line-height:1.6;color:var(--text-muted);">Share insights with stakeholders and refine reporting as needs evolve.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -292,6 +407,16 @@
         </div>
       </div>
 
+      <div class="card" style="overflow:hidden;padding:28px 20px;text-align:center;border-style:dashed;">
+        <a href="https://github.com/shahinshabab" style="color:var(--text);">
+          <div class="icon-box" style="margin:0 auto;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 3 12l5 6"/><path d="M16 6l5 6-5 6"/></svg>
+          </div>
+          <h4 style="font-size:14.5px;font-weight:700;margin-top:14px;">More projects on GitHub</h4>
+          <p style="margin-top:6px;font-size:12.5px;color:var(--text-muted);">github.com/shahinshabab</p>
+        </a>
+      </div>
+
     </div>
   </div>
 
@@ -328,11 +453,21 @@
 
         <div style="display:flex;gap:16px;position:relative;">
           <div class="icon-box" style="position:relative;z-index:1;background:var(--bg);border:1px solid var(--border);width:40px;height:40px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
-          <div class="card" style="flex:1;padding:20px;">
+          <div class="card" style="flex:1;padding:20px;margin-bottom:18px;">
             <span class="pill" style="color:var(--accent);border-color:var(--accent-soft);">Certification</span>
             <h4 style="font-size:15.5px;font-weight:700;margin-top:10px;">Data Science &amp; Analytics Certificate</h4>
             <p style="margin-top:6px;font-size:12.5px;color:var(--text-muted);"><strong style="color:var(--text);">GeeksforGeeks</strong> &middot; 2024</p>
             <p style="margin-top:10px;font-size:13px;line-height:1.6;color:var(--text-muted);">Python, Pandas &amp; NumPy, SQL, data visualization and ML fundamentals through real-world projects.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;position:relative;">
+          <div class="icon-box" style="position:relative;z-index:1;background:var(--bg);border:1px solid var(--border);width:40px;height:40px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
+          <div class="card" style="flex:1;padding:20px;">
+            <span class="pill" style="color:var(--accent);border-color:var(--accent-soft);">Certification &middot; Elite</span>
+            <h4 style="font-size:15.5px;font-weight:700;margin-top:10px;">Social Network Analysis</h4>
+            <p style="margin-top:6px;font-size:12.5px;color:var(--text-muted);"><strong style="color:var(--text);">NPTEL &middot; IIT Madras</strong><br>Jul &ndash; Oct 2024 &middot; Score 70%</p>
+            <p style="margin-top:10px;font-size:13px;line-height:1.6;color:var(--text-muted);">12-week certification (Govt. of India-funded) covering graph theory and network analysis, completed with a proctored exam.</p>
           </div>
         </div>
 
