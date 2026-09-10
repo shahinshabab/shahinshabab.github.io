@@ -24,11 +24,25 @@ Expanded with more content, sections and animation:
   (Python), Global CO₂ Emission Dashboard (Tableau) — each links out to
   its GitHub repo
 
-Note: certifications beyond GeeksforGeeks and the NPTEL Social Network
-Analysis cert (found in `Certificate/`) could not be pulled from
-LinkedIn — the profile is behind LinkedIn's anti-scraping wall — so the
-Journey section still only lists the two certificates confirmed from
-local files.
+Certifications, added from the real LinkedIn licenses & certifications
+list Shahin provided (LinkedIn itself is behind an anti-scraping wall,
+so this was pasted manually rather than fetched):
+- New dedicated "Licenses & certifications" section (6 featured cards +
+  a footnote) replaces the 2 certificate entries that used to live in
+  the Journey timeline, which is now Education + Experience only.
+- Featured: Microsoft Power BI Desktop (Maven Analytics), Power BI
+  Service (Maven Analytics), Google Analytics Certification (Skillshop),
+  Data Science & Analytics Certificate (GeeksforGeeks), Social Network
+  Analysis (NPTEL/IIT Madras), Number Theory and Cryptography (UC San
+  Diego).
+- Footnote credits 4 more Google Skillshop certs and 6 Maven Analytics
+  project certs, linking to LinkedIn for the full list.
+- 4 of the 6 project cards (CRM Sales Dashboard, Coffee Shop Sales
+  Dashboard, Airbnb Listing Analysis, Global CO2 Emission Dashboard)
+  now carry a "Maven Certified" pill since Shahin holds a matching
+  Maven Analytics project certificate for each.
+- "Professional Certifications" stat updated from 2 to 15 (the real
+  total count across all sources).
 
 Live mockup: https://claude.ai/code/artifact/6df982a8-fcac-4120-b0bd-849e15fabd42
 

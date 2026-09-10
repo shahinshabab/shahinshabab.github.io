@@ -1,7 +1,7 @@
 {
   "artboards": [
-    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 6100, "title": "Desktop - Light", "expand": "fit" },
-    { "file": "Mobile.dc.html", "x": 1580, "y": 0, "w": 390, "h": 8300, "title": "Mobile - Light", "expand": "fit" }
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 6900, "title": "Desktop - Light", "expand": "fit" },
+    { "file": "Mobile.dc.html", "x": 1580, "y": 0, "w": 390, "h": 9800, "title": "Mobile - Light", "expand": "fit" }
   ],
   "launch": { "view": "canvas" }
 }
