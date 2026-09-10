@@ -1,0 +1,387 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <style>
+    :root{
+      --bg: oklch(0.985 0.004 255);
+      --bg-1: oklch(0.975 0.006 255);
+      --bg-2: oklch(0.955 0.008 255);
+      --border: oklch(0.62 0.02 255 / 0.30);
+      --border-soft: oklch(0.62 0.02 255 / 0.15);
+      --text: oklch(0.22 0.02 255);
+      --text-muted: oklch(0.44 0.018 255);
+      --text-dim: oklch(0.60 0.016 255);
+      --accent: oklch(0.55 0.135 190);
+      --accent-2: oklch(0.50 0.135 255);
+      --accent-soft: oklch(0.55 0.135 190 / 0.10);
+      --on-accent: oklch(0.99 0 0);
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"Public Sans", system-ui, sans-serif;}
+    h1,h2,h3,h4{font-family:"Manrope", system-ui, sans-serif;margin:0;letter-spacing:-0.02em;}
+    p{margin:0;}
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{color:var(--accent-2);}
+    .container{padding:0 20px;}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:700;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);}
+    .eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:"Manrope",sans-serif;font-weight:600;font-size:15px;padding:14px 22px;border-radius:10px;cursor:pointer;width:100%;}
+    .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent-2));color:var(--on-accent);border:1px solid transparent;}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+    .icon-box{width:40px;height:40px;border-radius:11px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .card{background:var(--bg-1);border:1px solid var(--border-soft);border-radius:16px;box-shadow:0 1px 2px oklch(0.22 0.02 255 / 0.04);}
+    .pill{display:inline-flex;align-items:center;font-family:"Manrope",sans-serif;font-size:11.5px;font-weight:600;color:var(--text-muted);background:var(--bg-2);border:1px solid var(--border-soft);border-radius:999px;padding:6px 12px;}
+    .social-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-family:"Manrope",sans-serif;font-weight:700;font-size:13px;flex-shrink:0;}
+    .section-head{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;margin:0 auto 32px auto;}
+  </style>
+</helmet>
+
+<div style="width:390px;background:var(--bg);position:relative;overflow:hidden;">
+
+  <!-- ===== NAV ===== -->
+  <div style="position:relative;z-index:5;border-bottom:1px solid var(--border-soft);">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:72px;">
+      <div style="display:flex;align-items:center;gap:9px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg, var(--accent), var(--accent-2));display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:13px;color:var(--on-accent);">SS</div>
+        <span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;">Shahin Shabab</span>
+      </div>
+      <div class="social-btn" style="width:40px;height:40px;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <div id="home" style="position:relative;">
+    <div style="position:absolute;top:-100px;right:-140px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle, var(--accent-soft), transparent 70%);pointer-events:none;"></div>
+    <div class="container" style="position:relative;padding-top:44px;padding-bottom:56px;">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>DATA ANALYST &middot; DUBAI, UAE</div>
+      <h1 style="font-size:36px;font-weight:800;line-height:1.1;margin-top:16px;">Shahin Shabab</h1>
+      <p style="margin-top:16px;font-size:15px;line-height:1.7;color:var(--text-muted);">Analytical and results-driven Data Analyst skilled in SQL, Python, Power BI, Tableau, and Excel. I help businesses turn complex data into clear, actionable insights.</p>
+
+      <!-- portrait photo -->
+      <div style="position:relative;margin-top:28px;padding-bottom:34px;">
+        <div style="position:absolute;top:-14px;left:-14px;width:100%;height:100%;background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:18px 18px;opacity:0.6;border-radius:20px;"></div>
+        <div class="card" style="position:relative;padding:10px;">
+          <div style="position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/11;">
+            <img src="headshot.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg, oklch(0.55 0.135 190 / 0.08), transparent 30%, oklch(0.20 0.02 255 / 0.45) 100%);"></div>
+            <div class="pill" style="position:absolute;top:12px;left:12px;background:oklch(0.99 0 0 / 0.92);border-color:transparent;">
+              <span class="eyebrow-dot" style="margin-right:6px;"></span>Open to work
+            </div>
+          </div>
+          <div class="card" style="position:absolute;left:14px;right:14px;bottom:-26px;padding:13px 16px;display:flex;justify-content:space-between;box-shadow:0 16px 30px -10px oklch(0.22 0.02 255 / 0.2);">
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);">Accuracy</div>
+              <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;margin-top:2px;">98.2%</div>
+            </div>
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);">Reports</div>
+              <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;margin-top:2px;">24</div>
+            </div>
+            <div>
+              <div style="font-size:10px;color:var(--text-dim);">Uptime</div>
+              <div style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;margin-top:2px;">99.9%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:26px;">
+        <a href="#contact" class="btn btn-primary">Contact Me</a>
+        <a href="#" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 19h16"/></svg>
+          Download CV
+        </a>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:24px;">
+        <a href="https://linkedin.com/in/shahinshababp" class="social-btn">in</a>
+        <a href="https://github.com/shahinshabab" class="social-btn">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 3 12l5 6"/><path d="M16 6l5 6-5 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT + SKILLS ===== -->
+  <div id="about" class="container" style="padding-top:52px;padding-bottom:56px;">
+    <div class="eyebrow"><span class="eyebrow-dot"></span>About</div>
+    <h2 style="font-size:26px;font-weight:800;margin-top:14px;line-height:1.25;">Turning raw data into decisions that matter</h2>
+    <p style="margin-top:16px;font-size:15px;line-height:1.75;color:var(--text-muted);">I specialise in collecting, cleaning, and analysing data to uncover patterns and support smart business decisions. Hands-on experience in dashboards, automation, and performance monitoring.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;">
+      <span class="pill">B.Tech Data Science &amp; Engineering</span>
+      <span class="pill">Based in Dubai, UAE</span>
+    </div>
+
+    <div class="card" style="padding:24px;margin-top:28px;">
+      <div style="display:flex;flex-direction:column;gap:20px;">
+
+        <div>
+          <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-weight:600;font-size:13.5px;">
+            <span>Data Visualization</span>
+            <span style="color:var(--accent);">90%</span>
+          </div>
+          <div style="font-size:11.5px;color:var(--text-dim);margin-top:2px;">Power BI / Tableau / Grafana</div>
+          <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
+            <div style="height:100%;width:90%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-weight:600;font-size:13.5px;">
+            <span>SQL &amp; Database Management</span>
+            <span style="color:var(--accent);">85%</span>
+          </div>
+          <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
+            <div style="height:100%;width:85%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-weight:600;font-size:13.5px;">
+            <span>Python &amp; Automation</span>
+            <span style="color:var(--accent);">80%</span>
+          </div>
+          <div style="font-size:11.5px;color:var(--text-dim);margin-top:2px;">Pandas, NumPy</div>
+          <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
+            <div style="height:100%;width:80%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-weight:600;font-size:13.5px;">
+            <span>Excel &amp; Reporting</span>
+            <span style="color:var(--accent);">88%</span>
+          </div>
+          <div style="height:6px;border-radius:999px;background:var(--bg-2);margin-top:9px;">
+            <div style="height:100%;width:88%;border-radius:999px;background:linear-gradient(90deg, var(--accent), var(--accent-2));"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SERVICES ===== -->
+  <div id="services" style="background:var(--bg-1);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);">
+    <div class="container" style="padding-top:56px;padding-bottom:56px;">
+      <div class="section-head">
+        <div class="eyebrow"><span class="eyebrow-dot"></span>Services</div>
+        <h2 style="font-size:26px;font-weight:800;">What I can help you with</h2>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        <div class="card" style="padding:22px;display:flex;gap:16px;">
+          <div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div>
+          <div>
+            <h4 style="font-size:15.5px;font-weight:700;">Dashboards &amp; Reporting</h4>
+            <p style="margin-top:6px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Interactive dashboards in Power BI, Tableau, Grafana and Google Data Studio for real-time KPI tracking.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:22px;display:flex;gap:16px;">
+          <div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2Z"/><path d="M4 6v6c0 1.1 3.6 2 8 2s8-.9 8-2V6"/><path d="M4 12v6c0 1.1 3.6 2 8 2s8-.9 8-2v-6"/></svg></div>
+          <div>
+            <h4 style="font-size:15.5px;font-weight:700;">Data Cleaning &amp; Preparation</h4>
+            <p style="margin-top:6px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Cleaning, validating and transforming raw data using SQL, Python and Excel.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:22px;display:flex;gap:16px;">
+          <div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+          <div>
+            <h4 style="font-size:15.5px;font-weight:700;">Business Insights &amp; KPIs</h4>
+            <p style="margin-top:6px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Monitoring KPIs and surfacing insights that support decision making.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:22px;display:flex;gap:16px;">
+          <div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
+          <div>
+            <h4 style="font-size:15.5px;font-weight:700;">Analytics Automation</h4>
+            <p style="margin-top:6px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Automating recurring reports and data flows using Python.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:22px;display:flex;gap:16px;">
+          <div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 7 4-14 2 7h6"/></svg></div>
+          <div>
+            <h4 style="font-size:15.5px;font-weight:700;">Performance Tracking</h4>
+            <p style="margin-top:6px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Automated weekly and monthly analytics reports for managers and stakeholders.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:22px;display:flex;gap:16px;">
+          <div class="icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/><path d="M8 9h8M8 13h5"/></svg></div>
+          <div>
+            <h4 style="font-size:15.5px;font-weight:700;">Data Storytelling</h4>
+            <p style="margin-top:6px;font-size:13.5px;line-height:1.6;color:var(--text-muted);">Translating complex datasets into simple visual stories.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PROJECTS ===== -->
+  <div id="projects" class="container" style="padding-top:56px;padding-bottom:56px;">
+    <div class="section-head">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Portfolio</div>
+      <h2 style="font-size:26px;font-weight:800;">Selected data projects</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:18px;">
+
+      <div class="card" style="overflow:hidden;">
+        <div style="height:100px;background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:16px 16px;background-color:var(--bg-2);padding:14px;">
+          <svg width="100%" height="100%" viewBox="0 0 220 70" fill="none">
+            <polyline points="0,55 30,40 60,50 90,22 120,35 150,12 180,25 220,8" fill="none" stroke="oklch(0.55 0.135 190)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div style="padding:20px;">
+          <h4 style="font-size:15px;font-weight:700;">Grafana Data Visualization</h4>
+          <p style="margin-top:8px;font-size:13px;line-height:1.6;color:var(--text-muted);">Interactive Grafana dashboards for task management data stored in AWS Cloud.</p>
+          <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+            <span class="pill">Grafana</span><span class="pill">AWS</span><span class="pill">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="overflow:hidden;">
+        <div style="height:100px;background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:16px 16px;background-color:var(--bg-2);padding:14px;display:flex;align-items:flex-end;">
+          <svg width="100%" height="60" viewBox="0 0 220 60" fill="none">
+            <rect x="6" y="24" width="18" height="34" rx="2" fill="oklch(0.55 0.135 190)"/>
+            <rect x="34" y="14" width="18" height="44" rx="2" fill="oklch(0.55 0.135 190)"/>
+            <rect x="62" y="32" width="18" height="26" rx="2" fill="oklch(0.55 0.135 210)"/>
+            <rect x="90" y="6" width="18" height="52" rx="2" fill="oklch(0.53 0.135 230)"/>
+            <rect x="118" y="20" width="18" height="38" rx="2" fill="oklch(0.50 0.135 255)"/>
+            <rect x="146" y="0" width="18" height="58" rx="2" fill="oklch(0.50 0.135 255)"/>
+          </svg>
+        </div>
+        <div style="padding:20px;">
+          <h4 style="font-size:15px;font-weight:700;">Task Analytics Report Automation</h4>
+          <p style="margin-top:8px;font-size:13px;line-height:1.6;color:var(--text-muted);">Automated weekly and monthly task analytics reports with integrated data pipelines.</p>
+          <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+            <span class="pill">Python</span><span class="pill">Pandas</span><span class="pill">Excel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="overflow:hidden;">
+        <div style="height:100px;background-image:radial-gradient(var(--border) 1px, transparent 1px);background-size:16px 16px;background-color:var(--bg-2);padding:14px;display:flex;align-items:center;justify-content:center;">
+          <svg width="60" height="60" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="15.5" fill="none" stroke="var(--bg)" stroke-width="5"/>
+            <circle cx="18" cy="18" r="15.5" fill="none" stroke="oklch(0.55 0.135 190)" stroke-width="5" stroke-dasharray="60 100" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+            <circle cx="18" cy="18" r="15.5" fill="none" stroke="oklch(0.50 0.135 255)" stroke-width="5" stroke-dasharray="25 100" stroke-dashoffset="-60" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+          </svg>
+        </div>
+        <div style="padding:20px;">
+          <h4 style="font-size:15px;font-weight:700;">Google Data Studio Analysis</h4>
+          <p style="margin-top:8px;font-size:13px;line-height:1.6;color:var(--text-muted);">Company profit and loss data transformed into interactive dashboards.</p>
+          <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+            <span class="pill">Google Data Studio</span><span class="pill">Sheets</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== JOURNEY ===== -->
+  <div id="journey" style="background:var(--bg-1);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);">
+    <div class="container" style="padding-top:56px;padding-bottom:56px;">
+      <div class="section-head">
+        <div class="eyebrow"><span class="eyebrow-dot"></span>Journey</div>
+        <h2 style="font-size:26px;font-weight:800;">Education, experience &amp; credentials</h2>
+      </div>
+
+      <div style="position:relative;">
+        <div style="position:absolute;left:19px;top:6px;bottom:6px;width:1px;background:var(--border);"></div>
+
+        <div style="display:flex;gap:16px;position:relative;">
+          <div class="icon-box" style="position:relative;z-index:1;background:var(--bg);border:1px solid var(--border);width:40px;height:40px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-4 10 4-10 4-10-4Z"/><path d="M6 10v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 8v6"/></svg></div>
+          <div class="card" style="flex:1;padding:20px;margin-bottom:18px;">
+            <span class="pill" style="color:var(--accent);border-color:var(--accent-soft);">Education</span>
+            <h4 style="font-size:15.5px;font-weight:700;margin-top:10px;">B.Tech Data Science &amp; Engineering</h4>
+            <p style="margin-top:6px;font-size:12.5px;color:var(--text-muted);"><strong style="color:var(--text);">Manipal University Jaipur</strong><br>2021 &ndash; 2025 &middot; CGPA 7.01</p>
+            <p style="margin-top:10px;font-size:13px;line-height:1.6;color:var(--text-muted);">Strong foundation in data analysis, machine learning, databases and software engineering, with real-world dashboard and predictive-modelling projects.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;position:relative;">
+          <div class="icon-box" style="position:relative;z-index:1;background:var(--bg);border:1px solid var(--border);width:40px;height:40px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></div>
+          <div class="card" style="flex:1;padding:20px;margin-bottom:18px;">
+            <span class="pill" style="color:var(--accent);border-color:var(--accent-soft);">Experience</span>
+            <h4 style="font-size:15.5px;font-weight:700;margin-top:10px;">Data Analyst Intern</h4>
+            <p style="margin-top:6px;font-size:12.5px;color:var(--text-muted);"><strong style="color:var(--text);">Finanshels.com</strong>, Calicut<br>Aug &ndash; Oct 2024</p>
+            <p style="margin-top:10px;font-size:13px;line-height:1.6;color:var(--text-muted);">Built real-time KPI dashboards, refined reporting workflows and automated recurring tasks using SQL, Python and BI tools.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;position:relative;">
+          <div class="icon-box" style="position:relative;z-index:1;background:var(--bg);border:1px solid var(--border);width:40px;height:40px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
+          <div class="card" style="flex:1;padding:20px;">
+            <span class="pill" style="color:var(--accent);border-color:var(--accent-soft);">Certification</span>
+            <h4 style="font-size:15.5px;font-weight:700;margin-top:10px;">Data Science &amp; Analytics Certificate</h4>
+            <p style="margin-top:6px;font-size:12.5px;color:var(--text-muted);"><strong style="color:var(--text);">GeeksforGeeks</strong> &middot; 2024</p>
+            <p style="margin-top:10px;font-size:13px;line-height:1.6;color:var(--text-muted);">Python, Pandas &amp; NumPy, SQL, data visualization and ML fundamentals through real-world projects.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT / CTA ===== -->
+  <div id="contact" class="container" style="padding-top:56px;padding-bottom:56px;">
+    <div class="card" style="position:relative;padding:32px 24px;background-image:linear-gradient(var(--bg-1), var(--bg-1)), linear-gradient(90deg, var(--accent), var(--accent-2));background-origin:border-box;background-clip:padding-box, border-box;border-top:2px solid transparent;">
+      <h2 style="font-size:24px;font-weight:800;">Let&rsquo;s work together</h2>
+      <p style="margin-top:12px;font-size:14px;line-height:1.7;color:var(--text-muted);">If you&rsquo;re looking for a Data Analyst who can build dashboards, automate reports, and bring clarity to your data, feel free to reach out.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;font-size:13.5px;color:var(--text-muted);">
+        <div style="display:flex;align-items:center;gap:10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);flex-shrink:0;"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>Dubai, United Arab Emirates</div>
+        <div style="display:flex;align-items:center;gap:10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);flex-shrink:0;"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 9 9 0 0 0 3 .48 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.3a1 1 0 0 1 1 1 9 9 0 0 0 .48 3 1 1 0 0 1-.24 1Z"/></svg>+971 556 215 320</div>
+        <div style="display:flex;align-items:center;gap:10px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent);flex-shrink:0;"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:shahinshababp@gmail.com" style="color:var(--text-muted);">shahinshababp@gmail.com</a></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px;">
+        <a href="mailto:shahinshababp@gmail.com" class="btn btn-primary">Email Me</a>
+        <a href="#" class="btn btn-outline">Download CV</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div style="border-top:1px solid var(--border-soft);">
+    <div class="container" style="padding-top:40px;padding-bottom:40px;display:flex;flex-direction:column;align-items:center;gap:18px;">
+      <div style="display:flex;align-items:center;gap:9px;">
+        <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg, var(--accent), var(--accent-2));display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-weight:800;font-size:12px;color:var(--on-accent);">SS</div>
+        <span style="font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;">Shahin Shabab</span>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <a href="https://linkedin.com/in/shahinshababp" class="social-btn" style="width:38px;height:38px;font-size:12px;">in</a>
+        <a href="https://github.com/shahinshabab" class="social-btn" style="width:38px;height:38px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 3 12l5 6"/><path d="M16 6l5 6-5 6"/></svg>
+        </a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;font-family:'Manrope',sans-serif;font-weight:600;font-size:12.5px;color:var(--text-muted);">
+        <a href="#home" style="color:var(--text-muted);">Home</a>
+        <a href="#about" style="color:var(--text-muted);">About</a>
+        <a href="#services" style="color:var(--text-muted);">Services</a>
+        <a href="#projects" style="color:var(--text-muted);">Projects</a>
+        <a href="#contact" style="color:var(--text-muted);">Contact</a>
+      </div>
+      <p style="font-size:12px;color:var(--text-dim);text-align:center;">&copy; 2026 Shahin Shabab. All rights reserved.</p>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
