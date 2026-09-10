@@ -14,6 +14,21 @@ Expanded with more content, sections and animation:
 - CSS animations throughout: pulsing eyebrow dots, floating stat card,
   shimmering skill bars, staggered fade-up entrances, hover-lift on cards,
   animated gradient stat numbers
+- Services trimmed to 6 cards, with a new "Data Pipeline Development"
+  service (Shahin's own suggestion) replacing the overlapping
+  "Performance Tracking" card
+- Projects section now shows 6 real repos from github.com/shahinshabab
+  instead of placeholder content: Sales Pipeline Analysis (SQL/MySQL),
+  CRM Sales Dashboard (Google Sheets), Coffee Shop Sales Dashboard
+  (Power BI), HR Analytics Dashboard (Power BI), Airbnb Listing Analysis
+  (Python), Global CO₂ Emission Dashboard (Tableau) — each links out to
+  its GitHub repo
+
+Note: certifications beyond GeeksforGeeks and the NPTEL Social Network
+Analysis cert (found in `Certificate/`) could not be pulled from
+LinkedIn — the profile is behind LinkedIn's anti-scraping wall — so the
+Journey section still only lists the two certificates confirmed from
+local files.
 
 Live mockup: https://claude.ai/code/artifact/6df982a8-fcac-4120-b0bd-849e15fabd42
 
