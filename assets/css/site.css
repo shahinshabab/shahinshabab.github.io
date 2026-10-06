@@ -145,6 +145,7 @@ a.sr-only:focus{position:fixed;top:12px;left:12px;width:auto;height:auto;clip:au
 :root[data-theme="dark"] .glow{opacity:.4;}
 
 .hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center;padding:88px 0 96px;}
+.hero .pill-live{white-space:normal;}
 .hero-title{font-size:clamp(40px,6vw,68px);font-weight:800;line-height:1.04;margin-top:22px;letter-spacing:-.035em;}
 .hero-lede{margin-top:24px;font-size:18px;line-height:1.7;color:var(--text-muted);max-width:540px;}
 .hero-lede strong{color:var(--ink);font-weight:600;}
