@@ -130,35 +130,6 @@
     });
   });
 
-  // ===== 3D pointer tilt (active only while scene.js has turned the 3D layer on)
-  if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    var tiltTargets = [
-      { el: document.querySelector('.hero-visual'), max: 9, lift: 0 },
-    ];
-    document.querySelectorAll('.card.lift').forEach(function (el) {
-      tiltTargets.push({ el: el, max: 7, lift: -6 });
-    });
-    tiltTargets.forEach(function (t) {
-      var el = t.el;
-      if (!el) return;
-      el.addEventListener('pointermove', function (e) {
-        if (e.pointerType !== 'mouse' || !root.classList.contains('fx3d')) return;
-        var r = el.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width;
-        var y = (e.clientY - r.top) / r.height;
-        el.classList.add('tilting');
-        el.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
-        el.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
-        el.style.transform = 'perspective(900px) translate3d(0,' + t.lift + 'px,0) rotateX(' +
-          ((0.5 - y) * t.max * 2).toFixed(2) + 'deg) rotateY(' + ((x - 0.5) * t.max * 2).toFixed(2) + 'deg)';
-      });
-      el.addEventListener('pointerleave', function () {
-        el.classList.remove('tilting');
-        el.style.transform = '';
-      });
-    });
-  }
-
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 })();
