@@ -1,0 +1,12 @@
+{
+  "name": "shahinshabab-portfolio",
+  "private": true,
+  "description": "Portfolio site. The 3D background is built from scene-src/scene.js into assets/js/scene.js (run `npm run build`); GitHub Pages serves the committed bundle, so no build step runs on deploy.",
+  "scripts": {
+    "build": "esbuild scene-src/scene.js --bundle --minify --format=iife --target=es2019 --legal-comments=none --outfile=assets/js/scene.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "three": "^0.186.1"
+  }
+}
