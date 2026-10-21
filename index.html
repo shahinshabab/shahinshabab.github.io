@@ -82,6 +82,7 @@
       <symbol id="i-brief" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2V7"/><path d="M3 12.5h18"/></symbol>
       <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="5.5"/><path d="M8.5 13 7 22l5-3 5 3-1.5-9"/></symbol>
       <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></symbol>
+      <symbol id="i-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2.5 8.5 4.75v9.5L12 21.5l-8.5-4.75v-9.5L12 2.5Z"/><path d="m3.5 7.25 8.5 4.75 8.5-4.75M12 12v9.5"/></symbol>
       <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
     </defs>
   </svg>
@@ -109,6 +110,9 @@
       </nav>
 
       <div class="nav-actions">
+        <button class="icon-btn fx-toggle" id="fx-toggle" type="button" aria-label="Toggle 3D effects" aria-pressed="true" title="Turn 3D effects off" hidden>
+          <svg class="icon"><use href="#i-cube"/></svg>
+        </button>
         <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode">
           <svg class="icon i-sun"><use href="#i-sun"/></svg>
           <svg class="icon i-moon"><use href="#i-moon"/></svg>
@@ -695,5 +699,6 @@
   <button class="to-top" id="to-top" type="button" aria-label="Back to top"><svg class="icon"><use href="#i-up"/></svg></button>
 
   <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/scene.js" defer></script>
 </body>
 </html>
